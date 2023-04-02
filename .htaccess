@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Redirecionar a raiz para projeto/public/index.php
+RewriteRule ^$ public/index.php [L]
+
+# Redirecionar URLs sem extensão para arquivos .php correspondentes
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L,QSA]
+
+# Redirecionar para a página de erro personalizada quando a URL não for encontrada
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ public/404.php [L]

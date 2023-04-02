@@ -1,0 +1,41 @@
+ConnectionDB
+    public function __construct()
+
+    public function insertQuery($query, $params = []): bool
+    public function readQuery($query, $params = []): array
+    public function readAllQuery($query): array
+    public function readAllSimple($table): array
+    public function updateQuery($query, $params = []): bool
+
+
+require_once ('ConectionDB.php')
+abstract class CRUD
+    public function __construct($table)
+    
+    abstract public function create($obj)
+    abstract public function read($id)
+    abstract public function readAll()
+    abstract public function update($obj)
+    abstract public function delete($id)
+
+    protected function executeInsertQuery($query, $params = []): bool
+    protected function executeReadAllQuery($query): array
+    protected function executeReadQuery($query): array
+    protected function executeUpdateQuery($query): bool
+
+
+require_once ('/models/User.php');
+require_once ('./config/DBFunctions.php');
+UserController extends CRUD
+    public function __construct()
+
+    public function create($user): bool
+    public function read($id): array
+    public function readAll(): array
+    public function update($user): bool
+    public function delete($key): bool
+
+
+
+
+
