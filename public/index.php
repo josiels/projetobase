@@ -1,12 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    INDEX 1
-</body>
-</html>
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use eftec\bladeone\BladeOne;
+
+$layouts = __DIR__ . '/layouts';
+$cache = __DIR__ . '/cache';
+
+$blade = new BladeOne($layouts, $cache, BladeOne::MODE_AUTO);
+
+/*
+echo $blade->run('index', [
+    'title' => '',
+    'content' => ''
+]);
+*/
+echo $blade->run('index');
+//echo $layouts;
